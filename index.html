@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es" data-type="software">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kira — La IA que vive en tu teléfono, sin internet</title>
+<meta name="description" content="Kira es una IA privada para Android: responde sin conexión, sin cuenta y sin enviar tus chats a ningún servidor. Gratis.">
+<meta name="page-type" content="software">
+<meta name="site-kind" content="software">
+<meta name="theme-color" content="#0f1113">
+<meta property="og:title" content="Kira — La IA que vive en tu teléfono">
+<meta property="og:description" content="IA privada para Android. Sin internet, sin cuenta, gratis.">
+<meta property="og:image" content="share.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/kira.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('m-enter')</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Kira · software · carbón + lima de la marca (la pelota negra y su acento #c3f02f). Hero split con el producto real; momentos: frase que se ilumina al hacer scroll y gestos interactivos. -->
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<div id="ballStage" aria-hidden="true"><canvas id="ball"></canvas></div>
+<button id="ballHit" type="button" aria-label="Tocar a Kira"></button>
+<div id="ballDock" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Kira, inicio"><img src="img/kira.svg" alt="" width="30" height="30"><span>Kira</span></a>
+    <nav class="links" id="links" aria-label="Secciones">
+      <a href="#que-es">Qué es</a><a href="#funciones">Funciones</a><a href="#gestos">Gestos</a><a href="#privacidad">Privacidad</a><a href="#cerebros">Cerebros</a><a href="#preguntas">Preguntas</a>
+    </nav>
+    <div class="nav-act">
+      <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Activar sonidos de Kira"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05A4.47 4.47 0 0 0 16.5 12z"/></svg></button>
+      <a class="btn btn-lime nav-dl" href="kira.apk" download>Descargar APK</a>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="links" aria-label="Abrir menú"><svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="app">
+  <section class="hero" id="top" data-enter>
+    <div class="wrap hero-grid" id="contenido">
+      <div class="hero-copy">
+        <p class="eyebrow">IA privada para Android · gratis</p>
+        <h1>La IA que vive en tu teléfono.</h1>
+        <p class="lead">Kira responde sin internet, sin cuenta y sin mandar tus chats a ningún servidor. Ocupa 9,5 MB y funciona en Android 8 o superior.</p>
+        <div class="actions">
+          <a class="btn btn-lime" href="kira.apk" download><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>Descargar Kira</a>
+          <a class="btn btn-ghost" href="#que-es">Ver cómo funciona</a>
+        </div>
+        <ul class="chips" aria-label="Características">
+          <li>sin conexión</li><li>sin cuenta</li><li>sin anuncios</li>
+        </ul>
+      </div>
+      <div class="hero-visual">
+        <div class="slot slot-hero" data-ball></div>
+        <figure class="phone phone-hero"><img src="img/chat.webp" alt="Chat de Kira con ideas para un video, respondiendo dentro del teléfono" width="780" height="1688"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement" id="frase" aria-label="Kira en una frase">
+    <div class="pin">
+      <div class="wrap pin-in">
+        <div class="slot slot-statement" data-ball></div>
+        <p class="said" id="said">Kira no necesita <span data-r="offline">internet</span>, ni una <span data-r="lock">cuenta</span>, ni tus <span data-r="lock">datos</span>. Solo tu <span data-r="zap">teléfono</span> y ganas de <span data-r="hearts">hablar</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec light" id="que-es" data-react="spark">
+    <div class="wrap">
+      <p class="eyebrow">Qué es Kira</p>
+      <h2>Una compañera, no un buscador.</h2>
+      <div class="cards4">
+        <article class="card"><span class="ci"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3.1-9H8.9V6a3.1 3.1 0 0 1 6.2 0v2z"/></svg></span><h3>Privada</h3><p>Tus conversaciones se guardan en tu teléfono. Nadie más las lee.</p></article>
+        <article class="card"><span class="ci"><svg viewBox="0 0 24 24"><path d="M22.99 9C19.15 5.16 13.8 3.76 8.84 4.78l2.52 2.52c3.47-.17 6.99 1.05 9.630 3.7l2-2zm-4 4a9.793 9.793 0 0 0-4.49-2.56l3.53 3.53.96-.97zM2 3.05 5.07 6.1C3.6 6.82 2.22 7.78 1 9l1.99 2c1.24-1.24 2.67-2.16 4.2-2.77l2.24 2.24A9.684 9.684 0 0 0 5 13v.01L6.99 15a7.042 7.042 0 0 1 4.92-2.06L18.98 20l1.27-1.26L3.29 1.79 2 3.05zM9 17l3 3 3-3a4.237 4.237 0 0 0-6 0z"/></svg></span><h3>Sin conexión</h3><p>En un avión, en el monte o en un apagón: sigue respondiendo.</p></article>
+        <article class="card"><span class="ci"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6.04 6.04 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span><h3>Expresiva</h3><p>Una pelota que piensa, se ríe, se duerme y reacciona a lo que eliges.</p></article>
+        <article class="card"><span class="ci"><svg viewBox="0 0 24 24"><path d="M18.6 6.62c-1.44 0-2.8.56-3.77 1.53L12 10.66 10.48 12h.01L7.8 14.39c-.64.64-1.49.99-2.4.99-1.87 0-3.39-1.51-3.39-3.38S3.53 8.620 5.4 8.62c.91 0 1.76.35 2.44 1.03l1.13 1 1.51-1.34L9.22 8.2A5.37 5.37 0 0 0 5.4 6.62C2.42 6.62 0 9.04 0 12s2.42 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.53l2.83-2.5.01.01L13.52 12h-.01l2.69-2.39c.64-.64 1.49-.99 2.4-.99 1.87 0 3.39 1.51 3.39 3.38s-1.52 3.38-3.39 3.38c-.9 0-1.76-.35-2.44-1.03l-1.14-1.01-1.51 1.34 1.27 1.12a5.386 5.386 0 0 0 3.82 1.57c2.98 0 5.4-2.41 5.4-5.38s-2.42-5.37-5.4-5.37z"/></svg></span><h3>Gratis</h3><p>Sin suscripciones ni límites. Si te gusta, puedes invitarle un café.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="funciones" data-react="bubbles">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Funciones</p>
+        <h2>Lo que puedes hacer con Kira.</h2>
+        <ul class="feat">
+          <li><b>Chatear y escribir</b><span>Correos, ideas, resúmenes y código, en español.</span></li>
+          <li><b>Leer PDF y textos</b><span>Adjunta un documento y pregúntale por él.</span></li>
+          <li><b>Hablarle</b><span>Modo voz: le hablas y te contesta en voz alta.</span></li>
+          <li><b>Ocho enfoques</b><span>Estudio, programación, traducción, desahogo y más.</span></li>
+          <li><b>Memorias</b><span>Dile «recuerda que…» y lo tendrá en cuenta.</span></li>
+          <li><b>Descarga en segundo plano</b><span>El cerebro se baja aunque cierres la app, con aviso al terminar.</span></li>
+        </ul>
+      </div>
+      <div class="phones">
+        <figure class="phone phone-a"><img src="img/home.webp" alt="Pantalla de inicio de Kira con accesos a foto, voz, documento y web" width="780" height="1688" loading="lazy"></figure>
+        <figure class="phone phone-b"><img src="img/onb.webp" alt="Bienvenida de Kira eligiendo privacidad, con la pelota y un candado" width="780" height="1688" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec gestos" id="gestos">
+    <div class="wrap gest-grid">
+      <div>
+        <p class="eyebrow">Personalidad</p>
+        <h2>Una pelota. Mil gestos.</h2>
+        <p class="lead">Toca un gesto y mira cómo reacciona. Así responde dentro de la app a lo que eliges y a lo que le cuentas.</p>
+        <div class="gbtns" role="group" aria-label="Gestos de Kira">
+          <button type="button" data-g="lock">Privacidad</button><button type="button" data-g="offline">Sin conexión</button>
+          <button type="button" data-g="leaf">Ecológica</button><button type="button" data-g="spark">Curiosidad</button>
+          <button type="button" data-g="hearts">Cariño</button><button type="button" data-g="zap">Rapidez</button>
+          <button type="button" data-g="power">Apagón</button><button type="button" data-g="question">Duda</button>
+          <button type="button" data-g="grow">Poder</button><button type="button" data-g="rain">Tristeza</button>
+        </div>
+      </div>
+      <div class="stage"><div class="slot slot-stage" data-ball></div></div>
+    </div>
+  </section>
+
+  <section class="sec light" id="privacidad" data-react="lock">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Privacidad</p>
+        <h2>Lo que hablas con Kira se queda en tu teléfono.</h2>
+        <p class="lead">Internet solo se usa para descargar el cerebro una vez. Después, Kira funciona en modo avión.</p>
+      </div>
+      <div class="flow" aria-label="Dónde va cada cosa">
+        <div class="row"><span class="what">Tus chats</span><span class="line"><i></i></span><span class="where ok">tu teléfono</span></div>
+        <div class="row"><span class="what">El cerebro</span><span class="line"><i></i></span><span class="where ok">tu teléfono</span></div>
+        <div class="row"><span class="what">Tus memorias</span><span class="line"><i></i></span><span class="where ok">tu teléfono</span></div>
+        <div class="row"><span class="what">Búsqueda web</span><span class="line dim"><i></i></span><span class="where">solo la consulta, si la activas</span></div>
+        <div class="row"><span class="what">Cuentas y anuncios</span><span class="line none"></span><span class="where no">no existen</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="cerebros" data-react="grow">
+    <div class="wrap">
+      <p class="eyebrow">Cerebros</p>
+      <h2>Elige el cerebro que va con tu teléfono.</h2>
+      <div class="brains">
+        <article class="brain best"><span class="tag">recomendado</span><h3>Rápido y listo</h3><p class="model">Qwen 3 · 1.7B</p><dl><div><dt>tamaño</dt><dd>1,1 GB</dd></div><div><dt>velocidad</dt><dd>~5 tokens/s</dd></div></dl><p>Responde ágil, razona y acierta en cálculos.</p></article>
+        <article class="brain"><h3>Completo</h3><p class="model">Qwen 3.5 · 2B</p><dl><div><dt>tamaño</dt><dd>1,3 GB</dd></div><div><dt>velocidad</dt><dd>~2 tokens/s</dd></div></dl><p>Escribe un poco mejor, pero va más lento.</p></article>
+        <article class="brain"><h3>Ligero</h3><p class="model">Qwen 2.5 · 0.5B</p><dl><div><dt>tamaño</dt><dd>0,5 GB</dd></div><div><dt>velocidad</dt><dd>~15 tokens/s</dd></div></dl><p>Ultrarrápido para charlar; se equivoca más.</p></article>
+      </div>
+      <p class="fine">Velocidades medidas en un teléfono con procesador Unisoc T820. Dentro de la app hay ocho cerebros para elegir, también para programar y razonar paso a paso.</p>
+    </div>
+  </section>
+
+  <section class="sec light" id="ruta" data-react="spark">
+    <div class="wrap">
+      <p class="eyebrow">Hoja de ruta</p>
+      <h2>Qué funciona hoy y qué viene.</h2>
+      <div class="road">
+        <div class="col"><h3><i class="d on"></i>Ya funciona</h3><ul><li>Chat sin internet</li><li>Ocho cerebros descargables</li><li>Leer PDF y textos</li><li>Búsqueda en Wikipedia</li><li>Memorias y enfoques</li><li>Descargas en segundo plano</li></ul></div>
+        <div class="col"><h3><i class="d mid"></i>En pruebas</h3><ul><li>Modo voz completo</li><li>Avisos de respuesta lista</li><li>Respuestas instantáneas</li></ul></div>
+        <div class="col"><h3><i class="d"></i>Planeado</h3><ul><li>Ver fotos y videos en el móvil</li><li>Cámara directa</li><li>Kira para PC</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec cafe" id="cafe" data-react="hearts">
+    <div class="wrap cafe-grid">
+      <div class="cafe-copy">
+        <div class="slot slot-cafe" data-ball></div>
+        <p class="eyebrow">Apoya el proyecto</p>
+        <h2>Kira es gratis. Si te acompaña, invítale un café.</h2>
+        <p class="lead">Cada café son horas de trabajo y funciones nuevas. Escanea el código con Nequi o con la app de tu banco (Bre-B) y elige cuánto.</p>
+        <ul class="amounts" aria-label="Cantidades sugeridas"><li>☕ Un tinto <b>$3.000</b></li><li>☕ Un café <b>$6.000</b></li><li>🥐 Café con pan <b>$10.000</b></li></ul>
+      </div>
+      <figure class="qr"><img src="img/nequi-qr.png" alt="Código QR de Nequi para invitarle un café a Kira" width="600" height="600" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="sec light" id="preguntas">
+    <div class="wrap faq-grid">
+      <div><p class="eyebrow">Preguntas</p><h2>Lo que suelen preguntar.</h2><a class="btn btn-lime btn-dark" href="kira.apk" download>Descargar Kira</a></div>
+      <div class="faq">
+        <details open><summary>¿De verdad funciona sin internet?</summary><p>Sí. Descargas el cerebro una vez y desde ahí Kira responde dentro de tu teléfono, incluso en modo avión.</p></details>
+        <details><summary>¿Qué teléfono necesito?</summary><p>Android 8 o superior con procesador de 64 bits. Para ir cómodo recomendamos 4 GB de RAM o más.</p></details>
+        <details><summary>¿Es gratis de verdad?</summary><p>Sí: sin suscripciones, sin anuncios y sin límite de mensajes. Las donaciones son opcionales.</p></details>
+        <details><summary>¿Por qué se instala desde un APK?</summary><p>Kira todavía no está en Play Store. Al abrir el APK, Android te pedirá permitir instalar apps de esa fuente.</p></details>
+        <details><summary>¿Qué pasa con mis datos?</summary><p>Nada sale de tu teléfono. Solo si activas la búsqueda web se envía tu consulta a Wikipedia, nunca tu conversación.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a class="brand" href="#top" aria-label="Kira, volver arriba"><img src="img/kira.svg" alt="" width="26" height="26"><span>Kira</span></a>
+    <p>La IA privada que vive en tu teléfono.</p>
+    <nav aria-label="Pie"><a href="#funciones">Funciones</a><a href="#privacidad">Privacidad</a><a href="#cafe">Invítale un café</a><a href="kira.apk" download>Descargar</a></nav>
+  </div>
+</footer>
+
+<a class="coffee-pill" href="#cafe"><svg viewBox="0 0 24 24"><path d="M20 3H4v10a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-3h2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>Invítale un café</a>
+
+<script src="kira-ball.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
